@@ -22,7 +22,7 @@ def azel_to_hadec(azel):
     ha_rad = math.acos(math.cos(z_rad) / (math.cos(dec_rad) * math.cos(phi_rad))
                    - math.tan(dec_rad) * math.tan(phi_rad))
     # Convert back to degrees
-    ha_deg = math.degrees(ha_rad) / 15.0
+    ha_deg = math.degrees(ha_rad)
     dec_deg = math.degrees(dec_rad)
     if azel[0] > 0 and azel[0] < 180:
         ha_deg *= -1
@@ -203,10 +203,10 @@ def print_data_small():
           "   HA: " + str(round(lite.log[lite.n]['hadec'][0], 4)) + " deg\n"\
           "  DEC: " + str(round(lite.log[lite.n]['hadec'][1], 4)) + " deg\n"
     # Indicate if command is sent to telescope during this iteration
-    if lite.n % 3 == 0:
+    if lite.n % 3 == 2:
         str_output += "Sending command to telescope ....\n"
     else:
-        str_output += "Next command will be sent in " + str((3 - lite.n % 3) * 10) + " seconds\n"
+        str_output += "Next command will be sent in " + str(20 - 10 * (lite.n % 3)) + " seconds\n"
     return str_output
 
 """

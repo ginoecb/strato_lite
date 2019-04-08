@@ -48,11 +48,6 @@ def every_30_aprs():
 def every_30_else():
     ''' Send command to telescope '''
     # Send command to telescope, if connected and meeting minimum elevation requirement
-    fak = lite.is_tcp_set(lite.TCP_IP, lite.TCP_PORT)
-    cmd_valid = lite.next_command_valid
-    cmd = lite.next_command
-    val = 4
-    val = val
     if lite.is_tcp_set(lite.TCP_IP, lite.TCP_PORT) and lite.next_command_valid and lite.next_command != "NOT SET":
         # '#33,HA,DEC;' Provides values for HA, DEC to telescope
         lite.sock.send(bytes(lite.next_command, 'utf-8'))
