@@ -17,9 +17,8 @@ For making a prediction, data will be retrieved from one of the following method
 The source used for a prediction will depend on what *new* data is available,
 and will be chosen from those listed with respective decreasing priority.
 
-
-
 # Required Modules #
+To run this program, the following Python packages are required:
 
 - *csv*
 - *datetime*
@@ -36,11 +35,11 @@ NOTE: All these packages are available in PyCharm
 
 # Other Requirements #
 - A registered key is required for use with *APRS.fi* for callsign tracking
-- *predict.py* which requires a *[latitude, longitude, altitude]*
-and returns a predicted *[latitude, longitude, altitude]*
+- *predict.py* which requires a `[latitude, longitude, altitude]`
+and returns a predicted `[latitude, longitude, altitude]`
 
 # Required Inputs #
-At runtime, the program will ask for a text file as input. This should be placed in the same directory as the program's files. It should be structured as follows:
+At runtime, the program will ask for a text file as input. This should be placed in the **same directory** as the program's files. It should be structured as follows:
 
 1. APRS.fi key
 2. Latitude
@@ -54,10 +53,12 @@ At runtime, the program will ask for a text file as input. This should be placed
 
 NOTE: Packets will not be sent over TCP/IP if the IP Address and Port Number are left as *Not Set*, or if the computer is unable to connect to the desired machine.
 
+For further reading on how to simulate a launch, see *testing_instructions.md*
+
 # In-flight Commands #
 While this program is running, the following commands can be used:
 
-- `d`* or `data`: Displays the most recently calculated data
+- `d` or `data`: Displays the most recently calculated data
 - `p` or `pause`: Pauses telescope movement (toggles on / off)
 - `o` or `offset`: Change an applied offset to the predicted HA-DEC
 - `r` or `reset`: Orient telescope to its default HA-DEC position (3.66, -6.8)
