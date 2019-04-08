@@ -10,7 +10,7 @@ To run a simulation, perform the steps as follows:
 NOTE: If an invalid APRS.fi callsign is provided, an error may be thrown (Thread-1).
 While APRS.fi data will not update, the program will continue to function, as operations are separated across several threads.
 
-# Testing Files#
+# Testing Files #
 
 Several testing files are included in the `/testing` directory for simulating flights.
 
