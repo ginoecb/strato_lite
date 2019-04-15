@@ -33,7 +33,7 @@ def every_10_else():
         lite.next_command = "#33," + str(data['hadec'][0]) + "," + str(data['hadec'][1]) + ";"
     data['command'] = lite.next_command
     # Check if command is valid to send
-    lite.next_command_valid = fcn.is_command_valid(pos, data['azel'][1])
+    lite.next_command_valid = fcn.is_command_valid(pos, data['azel'][1], data['hadec'])
     # Update lite.log[]
     lite.log.append(data)
 

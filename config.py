@@ -96,7 +96,7 @@ live = True
 pause = False
 
 # Minimum elevation for valid commands
-min_el = 5 # add this to setup.txt
+min_el = 8 # add this to setup.txt
 
 # Current iteration, 10 sec interval
 n = 0

@@ -186,12 +186,30 @@ def get_last_pred_pos():
     else:
         return lite.log[lite.n - 1]['pred_pos']
 
-def is_command_valid(geodetic_pos, elevation):
+def is_pos_change_invalid(hadec_1, hadec_2):
+    ''' Returns true if position changes by more than 2 degrees for HA and DEC '''
+    # Check HA change
+    if abs(abs(hadec_1[0]) - abs(hadec_2[0])) > 2:
+        return True
+    # Check DEC change
+    elif abs(abs(hadec_1[1]) - abs(hadec_2[1])) > 2:
+        return True
+    # If both HA and DEC changes is <= 2 degrees
+    else:
+        return False
+
+def is_command_valid(geodetic_pos, elevation, hadec):
     ''' Check if next command is valid '''
     # Must be greater than or equal to minimum elevation, non-null, and telescope movement must not be paused
     if elevation >= lite.min_el and not np.array_equal(geodetic_pos, lite.null_pos) and not lite.pause:
+        if lite.n == 0:
+            return True
+        # Ensure HA DEC has changed by no more than 2 degrees (removes noise)
+        elif lite.n > 0 and not is_pos_change_invalid(hadec, lite.log[lite.n - 1]['hadec']):
+            return True
         # Might not need to check np.array_equal(geodetic_pos, lite.null_pos)
-        return True
+        else:
+            return False
     else:
         return False
 
